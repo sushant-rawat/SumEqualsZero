@@ -1,0 +1,41 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int[] arr=new int[n];
+        for(int i=0;i<n;i++){
+            arr[i]=sc.nextInt();
+        }
+        List<Integer> sumZero=new ArrayList<>();
+        for(int i=0;i<arr.length;i++){
+            for(int j=i;j<arr.length;j++){
+                int sum=0;
+                for(int k=i;k<=j;k++){
+                    if(arr[i]!=0){
+                        sumZero.add(arr[k]);
+                        sum+=arr[k];
+                    }
+                }
+                System.out.println(sum);
+                if(sum==0){
+                    for(int value:sumZero ){
+                        System.out.print(value+" ");
+                    }
+                    return;
+                }
+                else{
+                    sumZero=new ArrayList<>();
+                }
+            }
+        }
+
+        if(sumZero.isEmpty()){
+            System.out.println("No Elements found");
+        }
+    }
+}
+
+// Time Complexity : O(n^3) {Beacause we are using 3 loops}
+// Space Complexity : O(n) {"Because we are using an AraayList of size n"}
